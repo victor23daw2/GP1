@@ -1,5 +1,6 @@
 let http = require("http");
 let fs = require("fs");
+const port = 8888;
 
 function iniciar() {
   function onRequest(req, res) {
@@ -8,9 +9,7 @@ function iniciar() {
     console.log("Petició per a  " + reqUrl.pathname + " rebuda.");
 
     if (reqUrl.pathname == "/") {
-      // If I ask /.
-
-      // fs.readFile is to read pagina.html.
+      // fs.readFile is to read a file.
       fs.readFile("./index.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
@@ -118,8 +117,8 @@ function iniciar() {
     }
   }
 
-  http.createServer(onRequest).listen(8888);
-  console.log("Servidor iniciat.");
+  http.createServer(onRequest).listen(port);
+  console.log(`Servidor iniciat a localhost:${port}.`);
 }
 
 exports.iniciar = iniciar;
