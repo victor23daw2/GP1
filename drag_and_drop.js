@@ -15,31 +15,28 @@
  * Desenvolupament en entorn client. Escola del clot
  */
 window.onload = function () {
+  var tds = document.querySelectorAll("div");
+  [].forEach.call(tds, function (item) {
+    item.addEventListener("dragover", gestionarSobreDrag, false);
+    item.addEventListener("drop", gestionarDrop, false);
+  });
 
-    var tds = document.querySelectorAll('div');
-    [].forEach.call(tds, function (item) {
-        item.addEventListener('dragover', gestionarSobreDrag, false);
-        item.addEventListener('drop', gestionarDrop, false);
+  var imatges = document.querySelectorAll("img");
+  [].forEach.call(imatges, function (item) {
+    item.addEventListener("dragstart", gestionarIniciDrag, false);
+  });
 
-    });
+  function gestionarSobreDrag(ev) {
+    ev.preventDefault();
+  }
 
-    var imatges = document.querySelectorAll('img');
-    [].forEach.call(imatges, function (item) {
-        item.addEventListener('dragstart', gestionarIniciDrag, false);
-    });
+  function gestionarIniciDrag(ev) {
+    ev.dataTransfer.setData("imatge", ev.target.id);
+  }
 
-    function gestionarSobreDrag(ev) {
-        ev.preventDefault();
-    }
-
-    function gestionarIniciDrag(ev) {
-        ev.dataTransfer.setData("imatge", ev.target.id);
-    }
-
-    function gestionarDrop(ev) {
-       ev.preventDefault();
-       var data = ev.dataTransfer.getData("imatge");
-       ev.target.appendChild(document.getElementById(data));
-     }
-
+  function gestionarDrop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("imatge");
+    ev.target.appendChild(document.getElementById(data));
+  }
 };
