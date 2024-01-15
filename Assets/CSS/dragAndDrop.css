@@ -2,21 +2,22 @@ body {
   background-image: url("../Images/grifo.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 50%;
+  background-size: 40%;
   display: grid;
   margin-left: 5%;
   margin-right: 5%;
-  height: 100vh;
+  padding-bottom: 15%;
 }
 
 .drag {
-  width: 100%;
+  width: 70%;
+  margin-left: 15%;
   height: 110px;
   border-radius: 30px;
-  background-color: rgba(138, 138, 138, 0.471);
+  background-color: rgba(173, 216, 230, 0.5);
   margin-top: 20px;
   margin-bottom: 20px;
-  border: 2px solid #000;
+  border: 2px solid rgb(139, 205, 226);
 }
 
 img {
@@ -48,11 +49,11 @@ img {
 .square {
   width: 240px;
   height: 110px;
-  background-color: rgba(138, 138, 138, 0.471);
+  background-color: rgba(173, 216, 230, 0.5);
   border-radius: 10px;
   margin-right: 25px;
   margin-left: 25px;
-  border: 2px solid #000;
+  border: 2px solid lightblue;
 }
 
 .text {

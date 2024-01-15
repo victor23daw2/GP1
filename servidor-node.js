@@ -133,8 +133,8 @@ function iniciar() {
           res.end(data);
         }
       });
-    } else if (reqUrl.pathname == "/Assets/Images/gotaAgua.png") {
-      fs.readFile("./Assets/Images/gotaAgua.png", function (err, sortida) {
+    } else if (reqUrl.pathname == "/Assets/Images/gota.png") {
+      fs.readFile("./Assets/Images/gota.png", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "image/png; charset=utf-8",
         });
@@ -146,6 +146,69 @@ function iniciar() {
       fs.readFile("./Assets/Images/grifo.jpg", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "image/jpg; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/regar.png") {
+      fs.readFile("./Assets/Images/regar.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/sequia.png") {
+      fs.readFile("./Assets/Images/sequia.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/lluvia.png") {
+      fs.readFile("./Assets/Images/lluvia.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/rio.png") {
+      fs.readFile("./Assets/Images/rio.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/nivel_mar.png") {
+      fs.readFile("./Assets/Images/nivel_mar.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/lago.png") {
+      fs.readFile("./Assets/Images/lago.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/reservas_agua.png") {
+      fs.readFile("./Assets/Images/reservas_agua.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
         });
 
         res.write(sortida);
