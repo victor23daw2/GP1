@@ -2,11 +2,11 @@ body {
   background-image: url("../Images/grifo.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 40%;
+  background-size: 30%;
   display: grid;
   margin-left: 5%;
   margin-right: 5%;
-  padding-bottom: 15%;
+  background-position-y: 230px;
 }
 
 .drag {
@@ -15,7 +15,7 @@ body {
   height: 110px;
   border-radius: 30px;
   background-color: rgba(173, 216, 230, 0.5);
-  margin-top: 20px;
+  margin-top: 8%;
   margin-bottom: 20px;
   border: 2px solid rgb(139, 205, 226);
 }

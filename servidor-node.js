@@ -214,6 +214,15 @@ function iniciar() {
         res.write(sortida);
         res.end();
       });
+    } else if (reqUrl.pathname == "/Assets/Audio/gota.mp3") {
+      fs.readFile("./Assets/Audio/gota.mp3", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "audio/mp3; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
     } else {
       // If I don't ask for any of the pages that were before, I send "Not found".
 
