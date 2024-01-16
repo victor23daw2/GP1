@@ -56,6 +56,10 @@ window.onload = function () {
       // Mantén el color de fondo del square después de soltar la imagen
       var isLeftColumn = ev.target.closest(".container-left");
       ev.target.style.backgroundColor = isLeftColumn ? "lightblue" : "lightcoral";
+
+      // Reproduce un sonido
+      var audio = new Audio('./Assets/Audio/gota.mp3');
+      audio.play();
     }
   }
 
@@ -69,5 +73,9 @@ window.onload = function () {
 
     // Restaura el color de fondo del square
     draggedElement.closest(".square").style.backgroundColor = "";
+
+    // Reproduce un sonido
+    var audio = new Audio('./Assets/Audio/gota.mp3');
+    audio.play();
   }
 };
