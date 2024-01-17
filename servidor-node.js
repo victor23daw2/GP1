@@ -35,6 +35,8 @@ function iniciar() {
         res.write(sortida);
         res.end();
       });
+      
+      
     } else if (reqUrl.pathname == "/nosotros.html") {
       // fs.readFile is to read pagina.html.
       fs.readFile("./nosotros.html", function (err, sortida) {
@@ -151,6 +153,36 @@ function iniciar() {
         res.write(sortida);
         res.end();
       });
+    } else if (reqUrl.pathname == "/Assets/Images/logo.png") {
+      fs.readFile("./Assets/Images/logo.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/canvas.js") {
+      // fs.readFile is to read pagina.html.
+      fs.readFile("./canvas.js", function (err, sortida) {
+        res.writeHead(200, {
+          // As I return an html, the MIME must be "text/html".
+          "Content-Type": "text/html; charset=utf-8",
+        });
+
+        // productes.push(document.getElementById("seleccioProducte"));
+        console.log(sortida);
+        res.write(sortida);
+        res.end();
+      });
+    }else if (reqUrl.pathname == "/Assets/Media/sequia.mp4") {
+        fs.readFile("./Assets/Media/sequia.mp4", function (err, sortida) {
+          res.writeHead(200, {
+            "Content-Type": "video/mp4; charset=utf-8",
+          });
+          res.write(sortida);
+        res.end();
+      });
     } else if (reqUrl.pathname == "/Assets/Images/regar.png") {
       fs.readFile("./Assets/Images/regar.png", function (err, sortida) {
         res.writeHead(200, {
@@ -189,6 +221,15 @@ function iniciar() {
       });
     } else if (reqUrl.pathname == "/Assets/Images/nivel_mar.png") {
       fs.readFile("./Assets/Images/nivel_mar.png", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/png; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/logo.png") {
+      fs.readFile("./Assets/Images/logo.png", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "image/png; charset=utf-8",
         });
