@@ -2,20 +2,20 @@ body {
   background-image: url("../Images/grifo.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 30%;
+  background-size: 430px;
   display: grid;
-  margin-left: 5%;
-  margin-right: 5%;
-  background-position-y: 230px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-position-y: 260px;
 }
 
 .drag {
-  width: 70%;
-  margin-left: 15%;
+  width: 970px;
+  margin-left: 230px;
   height: 110px;
   border-radius: 30px;
   background-color: rgba(173, 216, 230, 0.5);
-  margin-top: 8%;
+  margin-top: 120px;
   margin-bottom: 20px;
   border: 2px solid rgb(139, 205, 226);
 }
@@ -28,11 +28,11 @@ img {
 }
 
 .container-left {
-  width: 30%;
+  width: 430px;
 }
 
 .container-right {
-  width: 30%;
+  width: 430px;
 }
 
 .containers {
