@@ -1,3 +1,5 @@
-var server = require("./servidor-node");
+var nodeServer = require("./servidor-Node");
+var mongoDBServer = require("./servidor-MongoDB");
 
-server.iniciar();
+nodeServer.iniciarNode();
+mongoDBServer.iniciarMongo();
