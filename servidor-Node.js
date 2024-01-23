@@ -10,7 +10,7 @@ function iniciarNode() {
   function onRequest(req, res) {
     const baseURL = req.protocol + "://" + req.headers.host + "/";
     const reqUrl = new URL(req.url, baseURL);
-    console.log("Petició per a  " + reqUrl.pathname + " rebuda.");
+    // console.log("Petició per a  " + reqUrl.pathname + " rebuda.");
 
     if (reqUrl.pathname == "/") {
       // fs.readFile is to read a file.
@@ -19,7 +19,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -29,7 +29,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -39,7 +39,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -49,7 +49,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -59,7 +59,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -69,7 +69,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -79,7 +79,7 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -92,26 +92,31 @@ function iniciarNode() {
       req.on("end", function () {
         // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
         let formData = querystring.parse(requestBody);
-        // console.log(formData);
+        console.log(formData);
 
         MongoClient.connect(
           "mongodb://localhost:27017/projecteDAW2",
           function (err, client) {
             assert.equal(null, err);
-            console.log("Connected to MongoDB successfully");
+            console.log("Connexio correcta amb mongodb.");
 
             const db = client.db("projecteDAW2");
 
             // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+            // console.log(
+            //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+            // );
             db.collection("usuaris")
               .findOne({
-                email: formData.email,
-                password: formData.password,
+                correu: formData.email,
+                contrasenya: formData.password,
               })
               .then((user) => {
+                console.log(user);
+
                 if (user) {
                   // User exists, perform login logic
-                  console.log("Connexio correcta amb MongoDB.");
+                  console.log(`Usuari ${user} connectat a mongodb.`);
                   res.end();
                 } else {
                   // User not found, handle accordingly (e.g., redirect to login page)
@@ -135,7 +140,7 @@ function iniciarNode() {
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -145,7 +150,7 @@ function iniciarNode() {
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
@@ -155,7 +160,7 @@ function iniciarNode() {
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
