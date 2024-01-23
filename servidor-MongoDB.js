@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=ZhqOp1Dkuso
+
 let MongoClient = require("mongodb").MongoClient;
 let assert = require("assert"); //utilitzem assercions
 
@@ -10,10 +12,10 @@ function iniciarMongo() {
     let db = client.db("projecteDAW2"); // Here I say the database that I'll use.
 
     // This function adds different users.
-    // afegirClients(db, err, function () {});
+    afegirClients(db, err, function () {});
 
     // This function shows the information of the user with sergi as name.
-    consultarDocument(db, err, function () {});
+    // consultarDocument(db, err, function () {});
 
     // This function deletes all of the users of the database.
     // esborrarTotsDocuments(db, err, function () {
