@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kids</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
-    <script type="text/javascript" src="./canvas.js"></script>
+    <script type="text/javascript" src="./JS/canvas.js"></script>
   </head>
   <body>
     <header>
@@ -17,24 +17,29 @@
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="kids.html">Noticias </a></li>
+          <li><a href="kids.html">Kids </a></li>
           <li><a href="drag_and_drop.html">Drag and drop</a></li>
           <li><a href="login.html">Login </a></li>
         </ul>
       </nav>
     </header>
     <h2>Inicia sesión</h2>
-    <form action="" class="form">
+    <form method="post" class="form">
       <div class="Group">
-        <label for="Email">Email</label>
-        <input placeholder="abc@email.com" id="Email" type="email" />
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          placeholder="abc@email.com"
+          type="email"
+        />
       </div>
       <div class="Group">
-        <label for="Password">Password</label>
-        <input id="Password" type="password" />
+        <label for="passwd">Password</label>
+        <input id="passwd" name="password" type="password" />
       </div>
       <div class="Group">
-        <button class="btn">Log in</button>
+        <button id="botoEnvia" class="btn" type="submit">Log in</button>
       </div>
     </form>
   </body>
