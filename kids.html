@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kids</title>
+    <title>Noticias</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
     <script type="text/javascript" src="./JS/canvas.js"></script>
   </head>
@@ -17,15 +17,27 @@
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="kids.html">Kids </a></li>
+          <li><a href="kids.html">Noticias </a></li>
           <li><a href="drag_and_drop.html">Drag and drop</a></li>
           <li><a href="login.html">Login </a></li>
         </ul>
       </nav>
     </header>
-    <video id="movies" autobuffer="true" width="400px" height="300px" controls>
-  		<source src="/Assets/Video/sequia.mp4" type='video/mp4'>
-      hola  	</video>
-    <canvas id="timeline" width="400px" height="300px">
+    <section class="layout">
+      <div class="noticia1">
+        <img src="/Assets/Images/noticia1.jpeg"><br><br>
+        <span class="titulo">Cataluña entrará en emergencia por sequía la semana que viene.</span>
+      </div>
+      <div class="noticia2">
+        <img src="/Assets/Images/noticia2.jpeg"><br><br>
+        <span class="titulo">En la Riera de Canyet de Badalona, desde hace 20 años se pierden unos 180.000 litros diarios por fugas en una tubería de Aigües-Ter Llobregat.</span>
+      </div>
+      <div class="noticia3">
+        <video id="movies" autobuffer="true" controls>
+          <source src="/Assets/Media/sequia.mp4" type='video/mp4'>
+        </video><br><br>
+        <span class="titulo">Datos de la sequía en Cataluña: más de siete millones de personas afrontan restricciones por la falta de agua.</span>
+      </div>
+    </section>
   </body>
 </html>

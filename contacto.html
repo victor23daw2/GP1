@@ -17,11 +17,43 @@
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="kids.html">Kids </a></li>
+          <li><a href="kids.html">Noticias </a></li>
           <li><a href="drag_and_drop.html">Drag and drop</a></li>
           <li><a href="login.html">Login </a></li>
         </ul>
       </nav>
     </header>
+    <div class="titulo-contacto">
+      <h1>CONTACTA</h1>
+      <h2 class="texto-superior">CONTACTA</h2>
+  </div><br><br>
+  <div class="form-container">
+      <div class="left-container">
+          <label for="nombre">NOMBRE</label>
+          <input type="text" id="nombre" name="nombre" required>
+
+          <label for="apellidos">APELLIDOS</label>
+          <input type="text" id="apellidos" name="apellidos" required>
+
+          <label for="correo">CORREO ELECTRÓNICO</label>
+          <input type="email" id="correo" name="correo" required>
+      </div>
+
+      <div class="right-container">
+          <label for="tema">TEMA</label>
+          <select id="tema" name="tema">
+              <option value="consulta">Consulta</option>
+              <option value="soporte">Soporte Técnico</option>
+              <option value="sugerencia">Sugerencia</option>
+          </select>
+
+          <label for="mensaje">MENSAJE</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+  </div>
+
+  <div class="button-container">
+      <button class="boton-contacto" type="submit">Enviar</button>
+  </div>
   </body>
 </html>
