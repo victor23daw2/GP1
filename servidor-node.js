@@ -255,6 +255,24 @@ function iniciar() {
         res.write(sortida);
         res.end();
       });
+    } else if (reqUrl.pathname == "/Assets/Images/noticia1.jpeg") {
+      fs.readFile("./Assets/Images/noticia1.jpeg", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/jpeg; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/Assets/Images/noticia2.jpeg") {
+      fs.readFile("./Assets/Images/noticia2.jpeg", function (err, sortida) {
+        res.writeHead(200, {
+          "Content-Type": "image/jpeg; charset=utf-8",
+        });
+
+        res.write(sortida);
+        res.end();
+      });
     } else if (reqUrl.pathname == "/Assets/Audio/gota.mp3") {
       fs.readFile("./Assets/Audio/gota.mp3", function (err, sortida) {
         res.writeHead(200, {

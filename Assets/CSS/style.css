@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lilita+One&family=Pixelify+Sans:wght@500&display=swap");
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 header {
   font-family: "Lilita One", sans-serif;
   width: 100%;
@@ -27,7 +33,6 @@ nav {
   right: 0;
   z-index: 1000;
   height: 100px;
-  padding-bottom: 15px;
 }
 
 .header {
@@ -207,3 +212,201 @@ form {
 .form .btn:active {
   transform: scale(0.98);
 }
+
+/* Empiezan los estilos de la pagina nosaltres */
+
+.titulo-nosaltres {
+  text-align: center;
+  margin-top: 160px; /* Ajusta según tus necesidades */
+}
+
+.titulo-nosaltres h1 {
+  font-size: 100px; 
+  color: rgba(50, 60, 137, 0.1); 
+  letter-spacing: 30px; 
+}
+
+.texto-superior-nosaltres {
+  position: absolute; 
+  margin-top: 198px; 
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 30px; 
+  color: #8499ad;
+  letter-spacing: 3px;
+}
+
+.nuevo-div {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgb(38, 127, 157);
+  padding-bottom: 20px;
+}
+
+h2 {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+.button-container {
+  text-align: center; /* Centrar horizontalmente */
+}
+
+.ver-catalogo-btn {
+  font-family: 'Exo 2', sans-serif;
+  font-size: large;
+  background-color: rgb(11, 67, 86);
+  color: #F8F9FA;
+  border: 2px solid #F8F9FA; 
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ver-catalogo-btn:hover {
+  background-color: #F8F9FA; 
+  color: rgb(11, 67, 86);
+}
+
+/* Acaban los estilos de la pagina nosaltres */
+
+/* Empiezan los estilos de la pagina noticias */
+
+.layout {
+  margin-top: 120px;
+  margin-left: 110px;
+  width: 1200px;
+  height: 600px;
+
+  display: grid;
+  grid:
+    "noticia1 noticia3 " 1fr
+    "noticia2 noticia3 " 1fr;
+  gap: 40px;
+}
+
+.noticia1,
+.noticia2 {
+  width: 275px;
+}
+
+.titulo {
+  font-size: 19pt;
+  font-weight: bold;
+}
+
+.noticia1 img {
+  width: 275px; 
+  height: 150px; 
+  object-fit: cover; 
+}
+
+.noticia2 img {
+  width: 275px; 
+  height: 150px; 
+  object-fit: cover; 
+}
+
+.noticia3 video{
+  width: 1000px;
+  height: 800px;
+  height: fit-content;
+  object-fit: cover;
+}
+
+.noticia1 {
+  grid-area: noticia1;
+}
+.noticia2 { 
+  grid-area: noticia2;
+}
+.noticia3 { 
+  grid-area: noticia3;
+}
+
+/* Acaban los estilos de la pagina noticias */
+
+/* Empiezan los estilos de contacte.html */
+
+.titulo-contacto {
+  text-align: center;
+  margin-top: 130px; /* Ajusta según tus necesidades */
+}
+
+.titulo-contacto h1 {
+  font-size: 100px; 
+  color: rgba(50, 60, 137, 0.1); 
+  letter-spacing: 30px; 
+  margin-bottom: 20px; 
+}
+
+.texto-superior {
+  position: absolute; 
+  margin-top: 167px; 
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 30px; 
+  color: #8499ad;
+  letter-spacing: 3px;
+}
+
+/* Estilos formulario contacte */
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto; 
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 1000px; 
+  width: 90%; 
+  margin-bottom: 20px; 
+}
+
+
+.left-container,
+.right-container {
+  width: 48%; /* Ajusta según tus necesidades */
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgb(11, 67, 86);
+}
+
+input, select, textarea {
+  width: 100%; /* Modificado para ocupar el ancho completo del contenedor padre */
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.boton-contacto {
+  font-family: 'Exo 2', sans-serif;
+  font-size: large;
+  background-color: #217093; 
+  border-color: white;
+  color: #fff;
+  width: 10%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.boton-contacto:hover {
+  background-color: rgb(11, 67, 86);
+}
+
+.button-container {
+  text-align: center;
+}
+
+/* Acaban los estilos del formulario de contacto */
