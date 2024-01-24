@@ -1,6 +1,11 @@
+const MongoClient = require("mongodb").MongoClient;
+const querystring = require("node:querystring");
+const assert = require("assert");
+const port = 8888;
+
 let http = require("http");
 let fs = require("fs");
-const port = 8888;
+let usuariAdmin = false;
 
 function iniciarNode() {
   function onRequest(req, res) {
@@ -17,150 +22,201 @@ function iniciarNode() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/index") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./index.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/nosotros") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./nosotros.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/contacto") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./contacto.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/kids") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./kids.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/drag_and_drop") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./drag_and_drop.html", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
+    } else if (reqUrl.pathname == "/admin") {
+      // If I'm the admin, I can access here.
+      if (usuariAdmin == true) {
+        fs.readFile("./admin.html", function (err, sortida) {
+          res.writeHead(200, {
+            // As I return an html, the MIME must be "text/html".
+            "Content-Type": "text/html; charset=utf-8",
+          });
+
+          res.write(sortida);
+          console.log(sortida);
+          res.end();
+        });
+      } else {
+        res.write("Error, no tens permis per accedir a aquesta pagina.");
+        res.end();
+      }
     } else if (reqUrl.pathname == "/login") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./login.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
-        console.log(sortida);
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
+
+      let requestBody = "";
+      req.on("data", function (data) {
+        requestBody += data;
+      });
+
+      req.on("end", function () {
+        // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
+        let formData = querystring.parse(requestBody);
+        console.log(formData);
+
+        MongoClient.connect(
+          "mongodb://localhost:27017/projecteDAW2",
+          function (err, client) {
+            assert.equal(null, err);
+            console.log("Connexio correcta amb mongodb.");
+
+            const db = client.db("projecteDAW2");
+
+            // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+            console.log(
+              `formData.email: ${formData.email}, formData.password: ${formData.password}`
+            );
+            db.collection("usuaris")
+              .findOne({
+                correu: formData.email,
+                contrasenya: formData.password,
+              })
+              .then((user) => {
+                console.log(user);
+
+                if (user) {
+                  // User exists, perform login logic
+                  console.log(`Usuari ${user.nom} connectat a mongodb.`);
+
+                  // Here I say that the user admin is enabled, which can enter to all pages.
+                  if (user.tipus == "admin") {
+                    usuariAdmin = true;
+                  }
+                  res.end();
+                } else {
+                  // User not found, handle accordingly (e.g., redirect to login page)
+                  console.log("Credencials incorrectes.");
+                  // If another user wants to log in, I must restrict the entry to the webpage.
+                  usuariAdmin = false;
+                  res.end();
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                res.end();
+              })
+              .finally(() => {
+                client.close();
+              });
+          }
+        );
+      });
     } else if (reqUrl.pathname == "/JS/drag_and_drop.js") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./JS/drag_and_drop.js", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/JS/contador.js") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./JS/contador.js", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/JS/canvas.js") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./JS/canvas.js", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/JS/login.js") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./JS/login.js", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();
       });
     } else if (reqUrl.pathname == "/JS/nomUsuari.js") {
-      // fs.readFile is to read pagina.html.
       fs.readFile("./JS/nomUsuari.js", function (err, sortida) {
         res.writeHead(200, {
           // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
-        // productes.push(document.getElementById("seleccioProducte"));
         console.log(sortida);
         res.write(sortida);
         res.end();

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lilita+One&family=Pixelify+Sans:wght@500&display=swap");
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -47,9 +48,8 @@ nav {
   z-index: 1;
 }
 
-
 .nav {
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   text-transform: uppercase;
   text-align: center;
   font-weight: 300;
@@ -61,36 +61,36 @@ nav {
 
 .nav * {
   box-sizing: border-box;
-  transition: all .35s ease;
+  transition: all 0.35s ease;
 }
 
 .nav li {
   display: inline-block;
   list-style: outside none none;
-  margin: .5em 1em;
+  margin: 0.5em 1em;
   padding: 0;
 }
 
-.nav a {
-  padding: .5em .8em;
+.nav > li > a {
+  padding: 0.5em 0.8em;
   color: rgb(61, 150, 180);
   position: relative;
   text-decoration: none;
   font-size: 20px;
 }
 
-.nav a::before,
-.nav a::after {
-  content: '';
+.nav > li > a::before,
+.nav > li > a::after {
+  content: "";
   height: 14px;
   width: 14px;
   position: absolute;
-  transition: all .35s ease;
+  transition: all 0.35s ease;
   opacity: 0;
 }
 
-.nav a::before {
-  content: '';
+.nav > li > a::before {
+  content: "";
   right: 0;
   top: 0;
   border-top: 3px solid rgb(38, 127, 157);
@@ -98,22 +98,22 @@ nav {
   transform: translate(-100%, 50%);
 }
 
-.nav a:after {
-  content: '';
+.nav > li > a:after {
+  content: "";
   left: 0;
   bottom: 0;
   border-bottom: 3px solid rgb(38, 127, 157);
   border-left: 3px solid rgb(38, 127, 157);
-  transform: translate(100%, -50%)
+  transform: translate(100%, -50%);
 }
 
-.nav a:hover:before,
-.nav a:hover:after{
-  transform: translate(0,0);
+.nav > li > a:hover:before,
+.nav > li > a:hover:after {
+  transform: translate(0, 0);
   opacity: 1;
 }
 
-.nav a:hover {
+.nav > li > a:hover {
   color: rgb(38, 127, 157);
 }
 
@@ -126,9 +126,7 @@ ul {
 }
 
 /* Fondo de todas las paginas y estilos de la barra de navegacion */
-form {
-  align-content: center;
-}
+
 .form {
   text-align: center;
   display: flex;
@@ -137,7 +135,9 @@ form {
   width: 280px;
   height: 350px;
   background-color: #fff;
-  margin: 0;
+  margin-top: 10%;
+  margin-left: 45%;
+  margin-right: 45%;
   box-shadow: -1px 0px 25px 0px #21719369;
   padding: 2.25em;
   box-sizing: border-box;
@@ -221,18 +221,18 @@ form {
 }
 
 .titulo-nosaltres h1 {
-  font-size: 100px; 
-  color: rgba(50, 60, 137, 0.1); 
-  letter-spacing: 30px; 
+  font-size: 100px;
+  color: rgba(50, 60, 137, 0.1);
+  letter-spacing: 30px;
 }
 
 .texto-superior-nosaltres {
-  position: absolute; 
-  margin-top: 198px; 
-  top: 0; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  font-size: 30px; 
+  position: absolute;
+  margin-top: 198px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
   color: #8499ad;
   letter-spacing: 3px;
 }
@@ -256,11 +256,11 @@ h2 {
 }
 
 .ver-catalogo-btn {
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-size: large;
   background-color: rgb(11, 67, 86);
-  color: #F8F9FA;
-  border: 2px solid #F8F9FA; 
+  color: #f8f9fa;
+  border: 2px solid #f8f9fa;
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -268,7 +268,7 @@ h2 {
 }
 
 .ver-catalogo-btn:hover {
-  background-color: #F8F9FA; 
+  background-color: #f8f9fa;
   color: rgb(11, 67, 86);
 }
 
@@ -300,18 +300,18 @@ h2 {
 }
 
 .noticia1 img {
-  width: 275px; 
-  height: 150px; 
-  object-fit: cover; 
+  width: 275px;
+  height: 150px;
+  object-fit: cover;
 }
 
 .noticia2 img {
-  width: 275px; 
-  height: 150px; 
-  object-fit: cover; 
+  width: 275px;
+  height: 150px;
+  object-fit: cover;
 }
 
-.noticia3 video{
+.noticia3 video {
   width: 1000px;
   height: 800px;
   height: fit-content;
@@ -321,10 +321,10 @@ h2 {
 .noticia1 {
   grid-area: noticia1;
 }
-.noticia2 { 
+.noticia2 {
   grid-area: noticia2;
 }
-.noticia3 { 
+.noticia3 {
   grid-area: noticia3;
 }
 
@@ -338,19 +338,19 @@ h2 {
 }
 
 .titulo-contacto h1 {
-  font-size: 100px; 
-  color: rgba(50, 60, 137, 0.1); 
-  letter-spacing: 30px; 
-  margin-bottom: 20px; 
+  font-size: 100px;
+  color: rgba(50, 60, 137, 0.1);
+  letter-spacing: 30px;
+  margin-bottom: 20px;
 }
 
 .texto-superior {
-  position: absolute; 
-  margin-top: 167px; 
-  top: 0; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  font-size: 30px; 
+  position: absolute;
+  margin-top: 167px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
   color: #8499ad;
   letter-spacing: 3px;
 }
@@ -360,14 +360,13 @@ h2 {
 .form-container {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto; 
+  margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
-  max-width: 1000px; 
-  width: 90%; 
-  margin-bottom: 20px; 
+  max-width: 1000px;
+  width: 90%;
+  margin-bottom: 20px;
 }
-
 
 .left-container,
 .right-container {
@@ -381,7 +380,9 @@ label {
   color: rgb(11, 67, 86);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%; /* Modificado para ocupar el ancho completo del contenedor padre */
   padding: 8px;
   margin-bottom: 16px;
@@ -391,9 +392,9 @@ input, select, textarea {
 }
 
 .boton-contacto {
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   font-size: large;
-  background-color: #217093; 
+  background-color: #217093;
   border-color: white;
   color: #fff;
   width: 10%;
