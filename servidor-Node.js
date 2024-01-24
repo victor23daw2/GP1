@@ -23,7 +23,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/index.html") {
+    } else if (reqUrl.pathname == "/index") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./index.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -33,7 +34,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/nosotros.html") {
+    } else if (reqUrl.pathname == "/nosotros") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./nosotros.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -43,7 +45,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/contacto.html") {
+    } else if (reqUrl.pathname == "/contacto") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./contacto.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -53,7 +56,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/kids.html") {
+    } else if (reqUrl.pathname == "/kids") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./kids.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -63,7 +67,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/drag_and_drop.html") {
+    } else if (reqUrl.pathname == "/drag_and_drop") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./drag_and_drop.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -73,7 +78,8 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/login.html") {
+    } else if (reqUrl.pathname == "/login") {
+      // fs.readFile is to read pagina.html.
       fs.readFile("./login.html", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
@@ -144,6 +150,19 @@ function iniciarNode() {
         res.write(sortida);
         res.end();
       });
+    } else if (reqUrl.pathname == "/JS/contador.js") {
+      // fs.readFile is to read pagina.html.
+      fs.readFile("./JS/contador.js", function (err, sortida) {
+        res.writeHead(200, {
+          // As I return an html, the MIME must be "text/html".
+          "Content-Type": "text/javascript; charset=utf-8",
+        });
+
+        // productes.push(document.getElementById("seleccioProducte"));
+        console.log(sortida);
+        res.write(sortida);
+        res.end();
+      });
     } else if (reqUrl.pathname == "/JS/canvas.js") {
       fs.readFile("./JS/canvas.js", function (err, sortida) {
         res.writeHead(200, {
@@ -161,6 +180,19 @@ function iniciarNode() {
         });
 
         // console.log(sortida);
+        res.write(sortida);
+        res.end();
+      });
+    } else if (reqUrl.pathname == "/JS/nomUsuari.js") {
+      // fs.readFile is to read pagina.html.
+      fs.readFile("./JS/nomUsuari.js", function (err, sortida) {
+        res.writeHead(200, {
+          // As I return an html, the MIME must be "text/html".
+          "Content-Type": "text/javascript; charset=utf-8",
+        });
+
+        // productes.push(document.getElementById("seleccioProducte"));
+        console.log(sortida);
         res.write(sortida);
         res.end();
       });
