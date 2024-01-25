@@ -95,6 +95,29 @@ function iniciarNode() {
           res.end();
         });
       } else {
+        res.writeHead(404, {
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        res.write("Error, no tens permis per accedir a aquesta pagina.");
+        res.end();
+      }
+    } else if (reqUrl.pathname == "/registre_usuari") {
+      // If I'm the admin, I can access here.
+      if (usuariAdmin == true) {
+        fs.readFile("./registre_usuari.html", function (err, sortida) {
+          res.writeHead(200, {
+            // As I return an html, the MIME must be "text/html".
+            "Content-Type": "text/html; charset=utf-8",
+          });
+
+          res.write(sortida);
+          console.log(sortida);
+          res.end();
+        });
+      } else {
+        res.writeHead(404, {
+          "Content-Type": "text/html; charset=utf-8",
+        });
         res.write("Error, no tens permis per accedir a aquesta pagina.");
         res.end();
       }

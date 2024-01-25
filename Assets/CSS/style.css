@@ -125,8 +125,13 @@ ul {
   color: rgb(11, 67, 86);
 }
 
-/* Fondo de todas las paginas y estilos de la barra de navegacion */
+div.panellAdmin {
+  margin-top: 10%;
+  margin-left: 45%;
+  margin-right: 45%;
+}
 
+/* Fondo de todas las paginas y estilos de la barra de navegacion */
 .form {
   text-align: center;
   display: flex;
