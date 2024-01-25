@@ -1,6 +1,15 @@
 window.onload = function () {
   var squares = document.querySelectorAll(".square");
   var dragContainer = document.querySelector(".drag");
+  var correctAnswers = 0;
+
+  // Asigna un identificador único a cada imagen
+  var imatges = document.querySelectorAll(".drag img");
+  imatges.forEach(function (item, index) {
+    var imgId = index + 1;
+    item.setAttribute("data-img-id", imgId);
+    item.addEventListener("dragstart", gestionarIniciDrag, false);
+  });
 
   squares.forEach(function (square) {
     square.addEventListener("dragenter", gestionarEntradaDrag, false);
@@ -12,11 +21,6 @@ window.onload = function () {
   dragContainer.addEventListener("dragover", gestionarSobreDrag, false);
   dragContainer.addEventListener("drop", gestionarDropContainer, false);
 
-  var imatges = document.querySelectorAll(".drag img");
-  imatges.forEach(function (item) {
-    item.addEventListener("dragstart", gestionarIniciDrag, false);
-  });
-
   function gestionarEntradaDrag(ev) {
     ev.preventDefault();
     // Cambia el color de fondo solo si el elemento tiene la clase "square".
@@ -24,13 +28,14 @@ window.onload = function () {
       // Verifica en qué columna se encuentra el cuadro de destino
       var isLeftColumn = ev.target.closest(".container-left");
       // Cambia el color en consecuencia
-      ev.target.style.backgroundColor = isLeftColumn ? "lightblue" : "lightcoral";
+      ev.target.style.backgroundColor = "lightblue";
     }
   }
 
   function gestionarSalirDrag(ev) {
     // Restaura el color de fondo solo si el elemento tiene la clase "square".
     if (ev.target.classList.contains("square")) {
+      // Restaura el color de fondo
       ev.target.style.backgroundColor = "";
     }
   }
@@ -45,17 +50,14 @@ window.onload = function () {
 
   function gestionarDropSquare(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("imatge");
+    var imgId = ev.dataTransfer.getData("imatge");
+    var draggedElement = document.getElementById(imgId);
+    var square = ev.target.closest(".square");
 
-    // Verifica si el contenedor es un square y no tiene una imagen
-    if (ev.target.classList.contains("square") && !ev.target.querySelector("img")) {
-      // Mueve la imagen al contenedor
-      var draggedElement = document.getElementById(data);
-      ev.target.appendChild(draggedElement);
-
-      // Mantén el color de fondo del square después de soltar la imagen
-      var isLeftColumn = ev.target.closest(".container-left");
-      ev.target.style.backgroundColor = isLeftColumn ? "lightblue" : "lightcoral";
+    if (square) {
+      // Mueve la imagen al cuadrado y cambia el color a azul
+      square.appendChild(draggedElement);
+      square.style.backgroundColor = "lightblue";
 
       // Reproduce un sonido
       var audio = new Audio('./Assets/Audio/gota.mp3');
@@ -65,10 +67,10 @@ window.onload = function () {
 
   function gestionarDropContainer(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("imatge");
+    var imgId = ev.dataTransfer.getData("imatge");
+    var draggedElement = document.getElementById(imgId);
 
     // Mueve la imagen al contenedor .drag
-    var draggedElement = document.getElementById(data);
     dragContainer.appendChild(draggedElement);
 
     // Restaura el color de fondo del square
@@ -78,4 +80,29 @@ window.onload = function () {
     var audio = new Audio('./Assets/Audio/gota.mp3');
     audio.play();
   }
+
+  // Función para verificar los aciertos
+  function verificarAciertos() {
+    correctAnswers = 0;
+
+    squares.forEach(function (square, index) {
+      var img = square.querySelector("img");
+      if (img) {
+        var imgId = parseInt(img.getAttribute("data-img-id"));
+        var squareId = index + 1;
+
+        // Verifica si el id de la imagen es igual al número del square
+        if (imgId === squareId) {
+          correctAnswers++;
+        }
+      }
+    });
+
+    // Muestra el número de aciertos
+    alert("Tienes " + correctAnswers + " aciertos.");
+  }
+
+  // Asigna la función verificarAciertos al botón de verificar
+  var verificarBoton = document.getElementById("verificarBoton");
+  verificarBoton.addEventListener("click", verificarAciertos);
 };
