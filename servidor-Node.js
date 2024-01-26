@@ -103,7 +103,7 @@ function iniciarNode() {
       }
     } else if (reqUrl.pathname == "/registre_usuari") {
       // If I'm the admin, I can access here.
-      if (usuariAdmin == true) {
+      if (usuariAdmin) {
         fs.readFile("./registre_usuari.html", function (err, sortida) {
           res.writeHead(200, {
             // As I return an html, the MIME must be "text/html".
@@ -113,6 +113,216 @@ function iniciarNode() {
           res.write(sortida);
           console.log(sortida);
           res.end();
+        });
+
+        let requestBody = "";
+        req.on("data", function (data) {
+          requestBody += data;
+        });
+
+        req.on("end", function () {
+          // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
+          let formData = querystring.parse(requestBody);
+          console.log("formData:");
+          console.log(formData);
+
+          console.log("Object.keys(formData):");
+          if (Object.keys(formData)) {
+            console.log(Object.keys.toString);
+          }
+
+          MongoClient.connect(
+            "mongodb://localhost:27017/projecteDAW2",
+            function (err, client) {
+              assert.equal(null, err);
+              console.log("Connexio correcta amb mongodb.");
+
+              const db = client.db("projecteDAW2");
+
+              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+              // console.log(
+              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+              // );
+              db.collection("usuaris")
+                .insertOne({
+                  nomUsuari: formData.nomUsuari,
+                  nomCognom: formData.nomCognom,
+                  edat: formData.edat,
+                  correu: formData.correu,
+                  passwd: formData.passwd,
+                  telf: formData.telf,
+                  tipus: formData.tipus,
+                })
+                .then((user) => {
+                  console.log(user.nomUsuari);
+
+                  if (user) {
+                    // User exists, perform login logic
+                    console.log(
+                      `Usuari ${user.nomUsuari} registrat correctament.`
+                    );
+                    res.end();
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  res.end();
+                })
+                .finally(() => {
+                  client.close();
+                });
+            }
+          );
+        });
+      } else {
+        res.writeHead(404, {
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        res.write("Error, no tens permis per accedir a aquesta pagina.");
+        res.end();
+      }
+    } else if (reqUrl.pathname == "/modificar_usuari") {
+      // https://www.mongodbtutorial.org/mongodb-crud/mongodb-updateone/
+      // If I'm the admin, I can access here.
+      if (usuariAdmin) {
+        fs.readFile("./modificar_usari.html", function (err, sortida) {
+          res.writeHead(200, {
+            // As I return an html, the MIME must be "text/html".
+            "Content-Type": "text/html; charset=utf-8",
+          });
+
+          res.write(sortida);
+          console.log(sortida);
+          res.end();
+        });
+
+        let requestBody = "";
+        req.on("data", function (data) {
+          requestBody += data;
+        });
+
+        req.on("end", function () {
+          // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
+          let formData = querystring.parse(requestBody);
+          // console.log("formData:");
+          // console.log(formData);
+
+          MongoClient.connect(
+            "mongodb://localhost:27017/projecteDAW2",
+            function (err, client) {
+              assert.equal(null, err);
+              console.log("Connexio correcta amb mongodb.");
+
+              const db = client.db("projecteDAW2");
+
+              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+              // console.log(
+              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+              // );
+              db.collection("usuaris")
+                .updateOne(
+                  {
+                    // I update the data from the user, by using its nomUsuari.
+                    nomUsuari: formData.nomUsuari,
+                  },
+                  {
+                    // $set is to replace the value of a field with the new value.
+                    $set: {
+                      nomCognom: formData.nomCognom,
+                      edat: formData.edat,
+                      correu: formData.correu,
+                      passwd: formData.passwd,
+                      telf: formData.telf,
+                    },
+                  }
+                )
+                .then((user) => {
+                  // console.log(user);
+
+                  if (user) {
+                    // User exists, perform login logic
+                    console.log(`Usuari modificat correctament.`);
+                    res.end();
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  res.end();
+                })
+                .finally(() => {
+                  client.close();
+                });
+            }
+          );
+        });
+      } else {
+        res.writeHead(404, {
+          "Content-Type": "text/html; charset=utf-8",
+        });
+        res.write("Error, no tens permis per accedir a aquesta pagina.");
+        res.end();
+      }
+    } else if (reqUrl.pathname == "/borrar_usuari") {
+      // https://www.mongodbtutorial.org/mongodb-crud/mongodb-updateone/
+      // If I'm the admin, I can access here.
+      if (usuariAdmin) {
+        fs.readFile("./borrar_usuari.html", function (err, sortida) {
+          res.writeHead(200, {
+            // As I return an html, the MIME must be "text/html".
+            "Content-Type": "text/html; charset=utf-8",
+          });
+
+          res.write(sortida);
+          console.log(sortida);
+          res.end();
+        });
+
+        let requestBody = "";
+        req.on("data", function (data) {
+          requestBody += data;
+        });
+
+        req.on("end", function () {
+          // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
+          let formData = querystring.parse(requestBody);
+          // console.log("formData:");
+          // console.log(formData);
+
+          MongoClient.connect(
+            "mongodb://localhost:27017/projecteDAW2",
+            function (err, client) {
+              assert.equal(null, err);
+              console.log("Connexio correcta amb mongodb.");
+
+              const db = client.db("projecteDAW2");
+
+              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+              // console.log(
+              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+              // );
+              db.collection("usuaris")
+                .deleteOne({
+                  // I update the data from the user, by using its nomUsuari.
+                  nomUsuari: formData.nomUsuari,
+                })
+                .then((user) => {
+                  // console.log(user);
+
+                  if (user) {
+                    // User exists, perform login logic
+                    console.log(`Usuari borrat correctament.`);
+                    res.end();
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  res.end();
+                })
+                .finally(() => {
+                  client.close();
+                });
+            }
+          );
         });
       } else {
         res.writeHead(404, {
@@ -150,21 +360,17 @@ function iniciarNode() {
 
             const db = client.db("projecteDAW2");
 
-            // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
-            console.log(
-              `formData.email: ${formData.email}, formData.password: ${formData.password}`
-            );
             db.collection("usuaris")
               .findOne({
-                correu: formData.email,
-                contrasenya: formData.password,
+                correu: formData.correu,
+                contrasenya: formData.passwd,
               })
               .then((user) => {
                 console.log(user);
 
                 if (user) {
                   // User exists, perform login logic
-                  console.log(`Usuari ${user.nom} connectat a mongodb.`);
+                  console.log(`Usuari ${user.nomUsuari} connectat a mongodb.`);
 
                   // Here I say that the user admin is enabled, which can enter to all pages.
                   if (user.tipus == "admin") {

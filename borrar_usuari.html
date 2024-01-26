@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
     <script type="text/javascript" src="./JS/canvas.js"></script>
   </head>
@@ -26,19 +26,22 @@
         </ul>
       </nav>
     </header>
+    <h2>Inicia sesión</h2>
 
-    <div class="panellAdmin">
-      <li class="list-group-item">
-        <a href="./registre_usuari">Registrar nou usuari</a>
-      </li>
+    <form method="post" class="form">
+      <div class="Group">
+        <label for="nomUsuari">Nom d'usuari a esborrar</label>
+        <input
+          id="nomUsuari"
+          name="nomUsuari"
+          placeholder="Pepito123"
+          type="text"
+        />
+      </div>
 
-      <li class="list-group-item">
-        <a href="./modificar_usuari">Modificar usuari</a>
-      </li>
-
-      <li class="list-group-item">
-        <a href="./borrar_usuari">Borrar usuari</a>
-      </li>
-    </div>
+      <div class="Group">
+        <button id="botoEnvia" class="btn" type="submit">Log in</button>
+      </div>
+    </form>
   </body>
 </html>
