@@ -178,7 +178,7 @@ function iniciarNode() {
       // https://www.mongodbtutorial.org/mongodb-crud/mongodb-updateone/
       // If I'm the admin, I can access here.
       if (usuariAdmin) {
-        fs.readFile("./modificar_usari.html", function (err, sortida) {
+        fs.readFile("./modificar_usuari.html", function (err, sortida) {
           res.writeHead(200, {
             // As I return an html, the MIME must be "text/html".
             "Content-Type": "text/html; charset=utf-8",
