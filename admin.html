@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
     <script type="text/javascript" src="./JS/canvas.js"></script>
   </head>
@@ -26,24 +26,19 @@
         </ul>
       </nav>
     </header>
-    <h2>Inicia sesión</h2>
-    <form method="post" class="form">
-      <div class="Group">
-        <label for="correu">Email</label>
-        <input
-          id="correu"
-          name="correu"
-          placeholder="abc@email.com"
-          type="email"
-        />
-      </div>
-      <div class="Group">
-        <label for="passwd">Password</label>
-        <input id="passwd" name="passwd" type="password" />
-      </div>
-      <div class="Group">
-        <button id="botoEnvia" class="btn" type="submit">Log in</button>
-      </div>
-    </form>
+
+    <div class="panellAdmin">
+      <li class="list-group-item">
+        <a href="./registre_usuari">Registrar nou usuari</a>
+      </li>
+
+      <li class="list-group-item">
+        <a href="./modificar_usuari">Modificar usuari</a>
+      </li>
+
+      <li class="list-group-item">
+        <a href="./borrar_usuari">Borrar usuari</a>
+      </li>
+    </div>
   </body>
 </html>

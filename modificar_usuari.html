@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Modificar usuari</title>
     <link rel="stylesheet" href="./Assets/CSS/style.css" />
     <script type="text/javascript" src="./JS/canvas.js"></script>
   </head>
@@ -26,21 +26,41 @@
         </ul>
       </nav>
     </header>
-    <h2>Inicia sesión</h2>
+
     <form method="post" class="form">
       <div class="Group">
-        <label for="correu">Email</label>
+        <label for="nomUsuari">Nom usuari a modificar.</label>
         <input
-          id="correu"
-          name="correu"
-          placeholder="abc@email.com"
-          type="email"
+          id="nomUsuari"
+          name="nomUsuari"
+          placeholder="Pepito123"
+          type="text"
         />
-      </div>
-      <div class="Group">
+
+        <label for="nomCognom">Nom i Cognom</label>
+        <input
+          id="nomCognom"
+          name="nomCognom"
+          placeholder="Javier Torres Museo"
+          type="text"
+        />
+
+        <label for="edat">Edat</label>
+        <input id="edat" name="edat" placeholder="23" type="text" />
+
+        <label for="correu">Correu</label>
+        <input id="correu" name="correu" type="email" />
+
         <label for="passwd">Password</label>
         <input id="passwd" name="passwd" type="password" />
+
+        <label for="telf">Telefon</label>
+        <input id="telf" name="telf" type="text" />
+
+        <label for="tipus">Tipus</label>
+        <input id="tipus" name="tipus" type="text" />
       </div>
+
       <div class="Group">
         <button id="botoEnvia" class="btn" type="submit">Log in</button>
       </div>
