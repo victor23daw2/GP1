@@ -6,12 +6,12 @@ body {
   display: grid;
   margin-left: 50px;
   margin-right: 50px;
-  background-position-y: 260px;
+  background-position-y: 250px;
 }
 
 .drag {
   width: 970px;
-  margin-left: 280px;
+  margin-left: 285px;
   height: 110px;
   border-radius: 30px;
   background-color: rgba(173, 216, 230, 0.5);
@@ -47,15 +47,36 @@ img {
 }
 
 .square {
-  width: 240px;
+  width: 150px;
   height: 110px;
   background-color: rgba(173, 216, 230, 0.5);
   border-radius: 10px;
-  margin-right: 40px;
-  margin-left: 40px;
+  margin-right: 60px;
+  margin-left: 120px;
   border: 2px solid lightblue;
 }
 
 .text {
   color: black;
+  width: 1%;
+}
+
+/* Agrega estos estilos a tu archivo de estilos CSS */
+.verificar-container {
+  text-align: center;
+}
+
+.boton-verificar {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Color de fondo, puedes cambiarlo según tu paleta de colores */
+  color: #fff; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo al pasar el ratón */
+}
+
+.boton-verificar:hover {
+  background-color: #2980b9; /* Color de fondo al pasar el ratón */
 }

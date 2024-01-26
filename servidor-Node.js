@@ -11,14 +11,12 @@ function iniciarNode() {
   function onRequest(req, res) {
     const baseURL = req.protocol + "://" + req.headers.host + "/";
     const reqUrl = new URL(req.url, baseURL);
-    console.log("Petició per a  " + reqUrl.pathname + " rebuda.");
+    // console.log("Petició per a  " + reqUrl.pathname + " rebuda.");
 
     if (reqUrl.pathname == "/") {
-      // If I ask /.
       // fs.readFile is to read a file.
       fs.readFile("./index.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
@@ -29,7 +27,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/index") {
       fs.readFile("./index.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
@@ -40,10 +37,9 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/nosotros") {
       fs.readFile("./nosotros.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
-
+        
         console.log(sortida);
         res.write(sortida);
         res.end();
@@ -51,7 +47,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/contacto") {
       fs.readFile("./contacto.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
@@ -62,7 +57,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/kids") {
       fs.readFile("./kids.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
@@ -73,7 +67,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/drag_and_drop") {
       fs.readFile("./drag_and_drop.html", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
 
@@ -398,7 +391,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/JS/drag_and_drop.js") {
       fs.readFile("./JS/drag_and_drop.js", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
@@ -420,7 +412,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/JS/canvas.js") {
       fs.readFile("./JS/canvas.js", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
@@ -431,7 +422,6 @@ function iniciarNode() {
     } else if (reqUrl.pathname == "/JS/login.js") {
       fs.readFile("./JS/login.js", function (err, sortida) {
         res.writeHead(200, {
-          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/javascript; charset=utf-8",
         });
 
@@ -606,7 +596,6 @@ function iniciarNode() {
       });
     } else {
       // If I don't ask for any of the pages that were before, I send "Not found".
-
       res.writeHead(404, {
         "Content-Type": "text/html; charset=utf-8",
       });
