@@ -35,6 +35,7 @@
           name="nomUsuari"
           placeholder="Pepito123"
           type="text"
+          required
         />
 
         <label for="nomCognom">Nom i Cognom</label>
@@ -43,10 +44,11 @@
           name="nomCognom"
           placeholder="Javier Torres Museo"
           type="text"
+          required
         />
 
         <label for="edat">Edat</label>
-        <input id="edat" name="edat" placeholder="23" type="text" />
+        <input id="edat" name="edat" placeholder="23" type="text" required />
 
         <label for="correu">Correu</label>
         <input
@@ -54,20 +56,23 @@
           name="correu"
           placeholder="abc@email.com"
           type="email"
+          required
         />
 
         <label for="passwd">Password</label>
-        <input id="passwd" name="passwd" type="password" />
+        <input id="passwd" name="passwd" type="password" required />
 
         <label for="telf">Telefon</label>
-        <input id="telf" name="telf" type="text" />
+        <input id="telf" name="telf" type="text" required />
 
         <label for="tipus">Tipus</label>
-        <input id="tipus" name="tipus" type="text" />
+        <input id="tipus" name="tipus" type="text" required />
       </div>
 
       <div class="Group">
-        <button id="botoEnvia" class="btn" type="submit">Registrar usuari</button>
+        <button id="botoEnvia" class="btn" type="submit">
+          Registrar usuari
+        </button>
       </div>
     </form>
   </body>

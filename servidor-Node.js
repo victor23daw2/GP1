@@ -39,7 +39,7 @@ function iniciarNode() {
         res.writeHead(200, {
           "Content-Type": "text/html; charset=utf-8",
         });
-        
+
         console.log(sortida);
         res.write(sortida);
         res.end();
@@ -119,53 +119,47 @@ function iniciarNode() {
           console.log("formData:");
           console.log(formData);
 
-          console.log("Object.keys(formData):");
-          if (Object.keys(formData)) {
-            console.log(Object.keys.toString);
-          }
+          // If I submit the form.
+          if (req.method == "POST") {
+            MongoClient.connect(
+              "mongodb://localhost:27017/projecteDAW2",
+              function (err, client) {
+                assert.equal(null, err);
+                console.log("Connexio correcta amb mongodb.");
 
-          MongoClient.connect(
-            "mongodb://localhost:27017/projecteDAW2",
-            function (err, client) {
-              assert.equal(null, err);
-              console.log("Connexio correcta amb mongodb.");
+                const db = client.db("projecteDAW2");
 
-              const db = client.db("projecteDAW2");
+                db.collection("usuaris")
+                  .insertOne({
+                    nomUsuari: formData.nomUsuari,
+                    nomCognom: formData.nomCognom,
+                    edat: formData.edat,
+                    correu: formData.correu,
+                    passwd: formData.passwd,
+                    telf: formData.telf,
+                    tipus: formData.tipus,
+                  })
+                  .then((user) => {
+                    console.log(user.nomUsuari);
 
-              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
-              // console.log(
-              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
-              // );
-              db.collection("usuaris")
-                .insertOne({
-                  nomUsuari: formData.nomUsuari,
-                  nomCognom: formData.nomCognom,
-                  edat: formData.edat,
-                  correu: formData.correu,
-                  passwd: formData.passwd,
-                  telf: formData.telf,
-                  tipus: formData.tipus,
-                })
-                .then((user) => {
-                  console.log(user.nomUsuari);
-
-                  if (user) {
-                    // User exists, perform login logic
-                    console.log(
-                      `Usuari ${user.nomUsuari} registrat correctament.`
-                    );
+                    if (user) {
+                      // User exists, perform login logic
+                      console.log(
+                        `Usuari ${user.nomUsuari} registrat correctament.`
+                      );
+                      res.end();
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
                     res.end();
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                  res.end();
-                })
-                .finally(() => {
-                  client.close();
-                });
-            }
-          );
+                  })
+                  .finally(() => {
+                    client.close();
+                  });
+              }
+            );
+          }
         });
       } else {
         res.writeHead(404, {
@@ -200,53 +194,56 @@ function iniciarNode() {
           // console.log("formData:");
           // console.log(formData);
 
-          MongoClient.connect(
-            "mongodb://localhost:27017/projecteDAW2",
-            function (err, client) {
-              assert.equal(null, err);
-              console.log("Connexio correcta amb mongodb.");
+          // If I submit the form.
+          if (req.method == "POST") {
+            MongoClient.connect(
+              "mongodb://localhost:27017/projecteDAW2",
+              function (err, client) {
+                assert.equal(null, err);
+                console.log("Connexio correcta amb mongodb.");
 
-              const db = client.db("projecteDAW2");
+                const db = client.db("projecteDAW2");
 
-              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
-              // console.log(
-              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
-              // );
-              db.collection("usuaris")
-                .updateOne(
-                  {
-                    // I update the data from the user, by using its nomUsuari.
-                    nomUsuari: formData.nomUsuari,
-                  },
-                  {
-                    // $set is to replace the value of a field with the new value.
-                    $set: {
-                      nomCognom: formData.nomCognom,
-                      edat: formData.edat,
-                      correu: formData.correu,
-                      passwd: formData.passwd,
-                      telf: formData.telf,
+                // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+                // console.log(
+                //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+                // );
+                db.collection("usuaris")
+                  .updateOne(
+                    {
+                      // I update the data from the user, by using its nomUsuari.
+                      nomUsuari: formData.nomUsuari,
                     },
-                  }
-                )
-                .then((user) => {
-                  // console.log(user);
+                    {
+                      // $set is to replace the value of a field with the new value.
+                      $set: {
+                        nomCognom: formData.nomCognom,
+                        edat: formData.edat,
+                        correu: formData.correu,
+                        passwd: formData.passwd,
+                        telf: formData.telf,
+                      },
+                    }
+                  )
+                  .then((user) => {
+                    // console.log(user);
 
-                  if (user) {
-                    // User exists, perform login logic
-                    console.log(`Usuari modificat correctament.`);
+                    if (user) {
+                      // User exists, perform login logic
+                      console.log(`Usuari modificat correctament.`);
+                      res.end();
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
                     res.end();
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                  res.end();
-                })
-                .finally(() => {
-                  client.close();
-                });
-            }
-          );
+                  })
+                  .finally(() => {
+                    client.close();
+                  });
+              }
+            );
+          }
         });
       } else {
         res.writeHead(404, {
@@ -281,41 +278,44 @@ function iniciarNode() {
           // console.log("formData:");
           // console.log(formData);
 
-          MongoClient.connect(
-            "mongodb://localhost:27017/projecteDAW2",
-            function (err, client) {
-              assert.equal(null, err);
-              console.log("Connexio correcta amb mongodb.");
+          // If I submit the form.
+          if (req.method == "POST") {
+            MongoClient.connect(
+              "mongodb://localhost:27017/projecteDAW2",
+              function (err, client) {
+                assert.equal(null, err);
+                console.log("Connexio correcta amb mongodb.");
 
-              const db = client.db("projecteDAW2");
+                const db = client.db("projecteDAW2");
 
-              // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
-              // console.log(
-              //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
-              // );
-              db.collection("usuaris")
-                .deleteOne({
-                  // I update the data from the user, by using its nomUsuari.
-                  nomUsuari: formData.nomUsuari,
-                })
-                .then((user) => {
-                  // console.log(user);
+                // Check if user with entered credentials exists, this part has been done with the help of ChatGPT.
+                // console.log(
+                //   `formData.email: ${formData.email}, formData.password: ${formData.password}`
+                // );
+                db.collection("usuaris")
+                  .deleteOne({
+                    // I update the data from the user, by using its nomUsuari.
+                    nomUsuari: formData.nomUsuari,
+                  })
+                  .then((user) => {
+                    // console.log(user);
 
-                  if (user) {
-                    // User exists, perform login logic
-                    console.log(`Usuari borrat correctament.`);
+                    if (user) {
+                      // User exists, perform login logic
+                      console.log(`Usuari borrat correctament.`);
+                      res.end();
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
                     res.end();
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                  res.end();
-                })
-                .finally(() => {
-                  client.close();
-                });
-            }
-          );
+                  })
+                  .finally(() => {
+                    client.close();
+                  });
+              }
+            );
+          }
         });
       } else {
         res.writeHead(404, {
@@ -345,48 +345,53 @@ function iniciarNode() {
         let formData = querystring.parse(requestBody);
         console.log(formData);
 
-        MongoClient.connect(
-          "mongodb://localhost:27017/projecteDAW2",
-          function (err, client) {
-            assert.equal(null, err);
-            console.log("Connexio correcta amb mongodb.");
+        // If I submit the form.
+        if (req.method == "POST") {
+          MongoClient.connect(
+            "mongodb://localhost:27017/projecteDAW2",
+            function (err, client) {
+              assert.equal(null, err);
+              console.log("Connexio correcta amb mongodb.");
 
-            const db = client.db("projecteDAW2");
+              const db = client.db("projecteDAW2");
 
-            db.collection("usuaris")
-              .findOne({
-                correu: formData.correu,
-                contrasenya: formData.passwd,
-              })
-              .then((user) => {
-                console.log(user);
+              db.collection("usuaris")
+                .findOne({
+                  correu: formData.correu,
+                  contrasenya: formData.passwd,
+                })
+                .then((user) => {
+                  console.log(user);
 
-                if (user) {
-                  // User exists, perform login logic
-                  console.log(`Usuari ${user.nomUsuari} connectat a mongodb.`);
+                  if (user) {
+                    // User exists, perform login logic
+                    console.log(
+                      `Usuari ${user.nomUsuari} connectat a mongodb.`
+                    );
 
-                  // Here I say that the user admin is enabled, which can enter to all pages.
-                  if (user.tipus == "admin") {
-                    usuariAdmin = true;
+                    // Here I say that the user admin is enabled, which can enter to all pages.
+                    if (user.tipus == "admin") {
+                      usuariAdmin = true;
+                    }
+                    res.end();
+                  } else {
+                    // User not found, handle accordingly (e.g., redirect to login page)
+                    console.log("Credencials incorrectes.");
+                    // If another user wants to log in, I must restrict the entry to the webpage.
+                    usuariAdmin = false;
+                    res.end();
                   }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
                   res.end();
-                } else {
-                  // User not found, handle accordingly (e.g., redirect to login page)
-                  console.log("Credencials incorrectes.");
-                  // If another user wants to log in, I must restrict the entry to the webpage.
-                  usuariAdmin = false;
-                  res.end();
-                }
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-                res.end();
-              })
-              .finally(() => {
-                client.close();
-              });
-          }
-        );
+                })
+                .finally(() => {
+                  client.close();
+                });
+            }
+          );
+        }
       });
     } else if (reqUrl.pathname == "/JS/drag_and_drop.js") {
       fs.readFile("./JS/drag_and_drop.js", function (err, sortida) {
