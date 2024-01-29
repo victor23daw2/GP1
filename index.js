@@ -1,3 +1,3 @@
-var server = require("./servidor-node");
+var nodeServer = require("./servidor-Node");
 
-server.iniciar();
+nodeServer.iniciarNode();
