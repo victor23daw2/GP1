@@ -53,17 +53,17 @@ window.onload = function () {
     var imgId = ev.dataTransfer.getData("imatge");
     var draggedElement = document.getElementById(imgId);
     var square = ev.target.closest(".square");
-
-    if (square) {
-      // Mueve la imagen al cuadrado y cambia el color a azul
+  
+    if (square && !square.querySelector("img")) {
+      // Verifica que el cuadro no tenga una imagen antes de agregar una nueva
       square.appendChild(draggedElement);
       square.style.backgroundColor = "lightblue";
-
+  
       // Reproduce un sonido
       var audio = new Audio('./Assets/Audio/gota.mp3');
       audio.play();
     }
-  }
+  }  
 
   function gestionarDropContainer(ev) {
     ev.preventDefault();

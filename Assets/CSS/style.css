@@ -277,7 +277,7 @@ h2 {
 /* Empiezan los estilos de la pagina noticias */
 
 .layout {
-  margin-top: 120px;
+  margin-top: 40px;
   margin-left: 110px;
   width: 1200px;
   height: 600px;
@@ -297,6 +297,8 @@ h2 {
 .titulo {
   font-size: 19pt;
   font-weight: bold;
+  color: #494847;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .noticia1 img {
@@ -326,6 +328,14 @@ h2 {
 }
 .noticia3 { 
   grid-area: noticia3;
+}
+
+h1.noticias {
+  margin-top: 130px;
+  margin-left: 120px;
+  color: #B5B5B4;
+  font-size: 60px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* Acaban los estilos de la pagina noticias */
